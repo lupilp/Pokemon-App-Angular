@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Result, PokemonDetail } from '../interface/pokemon.interface';
+import { Result, PokemonDetail, Sprites } from '../interface/pokemon.interface';
 import { PokemonService } from '../services/pokemon.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -22,6 +22,11 @@ export class TablaComponent implements OnInit {
     name: '',
     weight: 0,
     height: 0,
+    stats: [],
+    types: [],
+    sprites: {
+      front_default: '',
+    },
   };
 
   constructor(private pokemonService: PokemonService) {}
@@ -92,6 +97,9 @@ export class TablaComponent implements OnInit {
         name: res.name,
         weight: res.weight,
         height: res.height,
+        stats: res.stats,
+        types: res.types.map((t: any) => t.type.name),
+        sprites: res.sprites.other.dream_world.front_default,
       };
     });
   }

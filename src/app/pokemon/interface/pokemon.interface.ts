@@ -30,6 +30,10 @@ export interface PokemonDetail {
   weight: number;
 }
 
+// export interface PokemonDetailLocal {
+
+// }
+
 export interface Ability {
   ability: Species;
   is_hidden: boolean;
@@ -77,28 +81,16 @@ export interface GenerationIv {
   platinum: Sprites;
 }
 
-export interface Versions {
-  'generation-i': GenerationI;
-  'generation-ii': GenerationIi;
-  'generation-iii': GenerationIii;
-  'generation-iv': GenerationIv;
-  'generation-v': GenerationV;
-  'generation-vi': { [key: string]: Home };
-  'generation-vii': GenerationVii;
-  'generation-viii': GenerationViii;
-}
-
 export interface Sprites {
-  back_default: string;
-  back_female: null;
-  back_shiny: string;
-  back_shiny_female: null;
-  front_default: string;
-  front_female: null;
-  front_shiny: string;
-  front_shiny_female: null;
+  back_default?: string;
+  back_female?: null;
+  back_shiny?: string;
+  back_shiny_female?: null;
+  front_default?: string;
+  front_female?: null;
+  front_shiny?: string;
+  front_shiny_female?: null;
   other?: Other;
-  versions?: Versions;
   animated?: Sprites;
 }
 

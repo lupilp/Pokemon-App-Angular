@@ -1,13 +1,17 @@
-<div *ngIf="pokemonsTotal.length">
-  <ng-autocomplete
-    [data]="pokemonsTotal"
-    [searchKeyword]="keyword"
-    [itemTemplate]="itemTemplate"
-    [notFoundTemplate]="notFoundTemplate"
-    placeholder="Buscar..."
-    (selected)="getDetail($event.name)"
-  >
-  </ng-autocomplete>
+<div class="contenedor-home">
+  <!-- BUSCADOR -->
+
+  <div *ngIf="pokemonsTotal.length" class="ng-autocomplete">
+    <ng-autocomplete
+      [data]="pokemonsTotal"
+      [searchKeyword]="keyword"
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+      placeholder="Buscar..."
+      (selected)="getDetail($event.name)"
+    >
+    </ng-autocomplete>
+  </div>
 
   <ng-template #itemTemplate let-item>
     <a [innerHTML]="item.name"></a>
@@ -16,76 +20,108 @@
   <ng-template #notFoundTemplate let-notFound>
     <div>No existe el pokemon que buscas :(</div>
   </ng-template>
-</div>
 
-<div class="contenedor-home">
-  <table class="table-bordered">
-    <colgroup>
-      <col class="column1" />
-      <col class="columns2plus3" span="2" />
-    </colgroup>
+  <!-- FIN BUSCADOR -->
 
-    <tr>
-      <th class="border-izq">Image</th>
-      <th>Pokemon Name</th>
-      <th>Pokemon Type</th>
-      <th class="border-der">Boton</th>
-    </tr>
-    <tr
-      *ngFor="
-        let poke of pokemons
-          | paginate
-            : {
-                itemsPerPage: 10,
-                currentPage: page,
-                totalItems: totalPokemons
-              }
-      "
-      class="card"
-    >
-      <td>
-        <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
-      </td>
+  <!-- TABLA -->
 
-      <td>
-        {{ poke.name }}
-      </td>
-      <td>
-        {{ poke.types[0].type.name }}
-      </td>
+  <div class="contenedor-tabla-detalles">
+    <table class="table-bordered">
+      <colgroup>
+        <col class="column1" />
+        <col class="columns2plus3" span="2" />
+      </colgroup>
 
-      <td>
-        <button (click)="getDetail(poke.name)">Ver detalles</button>
-      </td>
-    </tr>
-  </table>
+      <tr>
+        <th class="border-izq">Image</th>
+        <th>Pokemon Name</th>
+        <th>Pokemon Type</th>
+        <th class="border-der">Details</th>
+      </tr>
+      <tr
+        *ngFor="
+          let poke of pokemons
+            | paginate
+              : {
+                  itemsPerPage: 10,
+                  currentPage: page,
+                  totalItems: totalPokemons
+                }
+        "
+        class="card"
+      >
+        <td>
+          <img
+            [src]="poke.sprites.front_default"
+            alt="Pokemon"
+            class="pokemon"
+          />
+        </td>
 
-  <!-- <div class="detalles"> -->
-  <div class="detalles" *ngIf="detallePokemon.name !== ''">
-    <div>
-      {{ detallePokemon.name }} - {{ detallePokemon.weight }} -
-      {{ detallePokemon.height }}
+        <td>
+          {{ poke.name }}
+        </td>
+        <td>
+          {{ poke.types[0].type.name }}
+          {{ poke.types[1] && "- " + poke.types[1]?.type.name }}
+        </td>
+
+        <td>
+          <button (click)="getDetail(poke.name)" class="button-2">
+            Ver detalles
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- FIN TABLA -->
+
+    <!-- DETALLES -->
+
+    <!-- <div class="detalles-card" *ngIf="detallePokemon.name !== ''"> -->
+    <div class="detalles-card">
       <button (click)="detallePokemon.name = ''">X</button>
-    </div>
+      <div class="detalles-info">
+        <img [src]="detallePokemon.sprites" alt="pokemon" class="img-pokemon" />
+        <div>Name: {{ detallePokemon.name }}</div>
+        <div>Weight: {{ detallePokemon.weight }}</div>
+        <div>Height: {{ detallePokemon.height }}</div>
+        <div>Types: {{ detallePokemon.types }}</div>
+        <div *ngFor="let item of detallePokemon.stats">
+          {{ item.stat.name }}: {{ item.base_stat }}
+        </div>
+      </div>
 
-    <div>
-      <form (ngSubmit)="changeName(newNameInput)">
-        <input
-          type="text"
-          placeholder="Nombre"
-          name="nombre"
-          [(ngModel)]="newNameInput"
-        />
-        <button type="submit">Cambiar Nombre</button>
-      </form>
+      <div>
+        <form (ngSubmit)="changeName(newNameInput)">
+          <input
+            type="text"
+            placeholder="Nombre"
+            name="nombre"
+            [(ngModel)]="newNameInput"
+          />
+          <button type="submit">Cambiar Nombre</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-<div class="abecedario">
-  <div *ngFor="let item of abecedario | keyvalue">
-    {{ item.key }} - {{ item.value }}
+  <!-- FIN DETALLES -->
+
+  <!-- ABECEDARIO -->
+
+  <div class="abecedario">
+    <div *ngFor="let item of abecedario | keyvalue">
+      {{ item.key }} - {{ item.value }}
+    </div>
   </div>
+
+  <!-- FIN ABECEDARIO -->
+
+  <!-- PAGINADO -->
+
+  <pagination-controls
+    (pageChange)="page = $event; pokemons = []; getPokemons()"
+  ></pagination-controls>
+
+  <!-- FIN PAGINADO -->
 </div>
-<pagination-controls
-  (pageChange)="page = $event; pokemons = []; getPokemons()"
-></pagination-controls>
