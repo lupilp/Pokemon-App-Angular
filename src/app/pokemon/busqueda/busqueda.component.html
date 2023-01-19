@@ -1,6 +1,18 @@
-<!-- <input
-  type="text"
-  placeholder="Busca tu pokemon"
-  (keyup.enter)="buscar()"
-  #txtBuscar
-/> -->
+<!-- <div>
+  <ng-autocomplete
+    [data]="data$ | async"
+    [searchKeyword]="keyword"
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    placeholder="Buscar..."
+  >
+  </ng-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div> -->

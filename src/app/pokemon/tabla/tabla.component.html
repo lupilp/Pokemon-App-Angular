@@ -1,4 +1,22 @@
 <h3>Pokemones</h3>
+<div *ngIf="pokemonsTotal.length">
+  <ng-autocomplete
+    [data]="pokemonsTotal"
+    [searchKeyword]="keyword"
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    placeholder="Buscar..."
+  >
+  </ng-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div>No existe el pokemon que buscas :(</div>
+  </ng-template>
+</div>
 
 <ul class="cards">
   <li

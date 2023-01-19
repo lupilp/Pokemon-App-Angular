@@ -23,7 +23,6 @@ export interface Result {
   moves: Move[];
   name: string;
   order: number;
-  past_types: any[];
   species: Species;
   sprites: Sprites;
   stats: Stat[];

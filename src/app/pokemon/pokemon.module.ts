@@ -5,6 +5,9 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { ResultadosComponent } from './resultados/resultados.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TablaComponent,
   ],
   exports: [PokemonPageComponent],
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [
+    CommonModule,
+    NgxPaginationModule,
+    HttpClientModule,
+    FormsModule,
+    AutocompleteLibModule,
+  ],
 })
 export class PokemonModule {}
