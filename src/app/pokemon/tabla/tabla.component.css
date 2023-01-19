@@ -212,7 +212,7 @@ table {
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .button-get-detail:hover {
