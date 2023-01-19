@@ -45,6 +45,11 @@
     <button (click)="detallePokemon.name = ''">X</button>
   </div>
 </div>
+
+<div *ngFor="let item of abecedario | keyvalue" class="abecedario">
+  <div>{{ item.key }}</div>
+  <div>{{ item.value }}</div>
+</div>
 <pagination-controls
   (pageChange)="page = $event; pokemons = []; getPokemons()"
 ></pagination-controls>

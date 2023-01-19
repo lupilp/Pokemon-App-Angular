@@ -18,3 +18,8 @@
 .contenedor-home {
   display: flex;
 }
+
+.abecedario {
+  display: flex;
+  border: 1px solid red;
+}

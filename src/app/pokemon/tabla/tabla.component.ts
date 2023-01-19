@@ -15,6 +15,7 @@ export class TablaComponent implements OnInit {
   page: number = 1;
   totalPokemons: number = 0;
   public keyword: string = 'name';
+  abecedario: any = {};
 
   detallePokemon: PokemonDetail = {
     name: '',
@@ -29,9 +30,37 @@ export class TablaComponent implements OnInit {
     this.getAllPokemons();
   }
 
+  getAbcedario(arrPokemons: any) {
+    let resultadosOrdenados = arrPokemons.sort(function (a: any, b: any) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (b.name > a.name) {
+        return -1;
+      }
+      return 0;
+    });
+
+    let abecedario: any = {};
+
+    resultadosOrdenados.forEach((pokemon: any) => {
+      if (!abecedario.hasOwnProperty(pokemon.name[0])) {
+        abecedario[pokemon.name[0]] = 1;
+      } else {
+        abecedario[pokemon.name[0]] += 1;
+      }
+    });
+    return abecedario;
+  }
+
+  checkObjetoEmpty(objeto: any) {
+    return Object.entries(objeto).length === 0;
+  }
+
   getAllPokemons() {
     this.pokemonService.getPokemons(1000, 0).subscribe((res: any) => {
       this.pokemonsTotal = res.results;
+      this.abecedario = this.getAbcedario(res.results);
     });
   }
 
