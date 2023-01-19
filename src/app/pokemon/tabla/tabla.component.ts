@@ -98,7 +98,7 @@ export class TablaComponent implements OnInit {
         weight: res.weight,
         height: res.height,
         stats: res.stats,
-        types: res.types.map((t: any) => t.type.name),
+        types: res.types.map((t: any) => ' ' + t.type.name),
         sprites: res.sprites.other.dream_world.front_default,
       };
     });

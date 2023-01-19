@@ -80,15 +80,30 @@
 
     <!-- <div class="detalles-card" *ngIf="detallePokemon.name !== ''"> -->
     <div class="detalles-card">
-      <button (click)="detallePokemon.name = ''">X</button>
+      <button (click)="detallePokemon.name = ''" class="boton-cerrar-detalles">
+        x
+      </button>
       <div class="detalles-info">
         <img [src]="detallePokemon.sprites" alt="pokemon" class="img-pokemon" />
-        <div>Name: {{ detallePokemon.name }}</div>
-        <div>Weight: {{ detallePokemon.weight }}</div>
-        <div>Height: {{ detallePokemon.height }}</div>
-        <div>Types: {{ detallePokemon.types }}</div>
-        <div *ngFor="let item of detallePokemon.stats">
-          {{ item.stat.name }}: {{ item.base_stat }}
+        <div class="detalles-item">
+          Name:
+          <div class="detalles-item-stat">{{ detallePokemon.name }}</div>
+        </div>
+        <div class="detalles-item">
+          Weight:
+          <div class="detalles-item-stat">{{ detallePokemon.weight }}</div>
+        </div>
+        <div class="detalles-item">
+          Height:
+          <div class="detalles-item-stat">{{ detallePokemon.height }}</div>
+        </div>
+        <div class="detalles-item">
+          Types:
+          <div class="detalles-item-stat">{{ detallePokemon.types }}</div>
+        </div>
+        <div *ngFor="let item of detallePokemon.stats" class="detalles-item">
+          {{ item.stat.name }}:
+          <div class="detalles-item-stat">{{ item.base_stat }}</div>
         </div>
       </div>
 
