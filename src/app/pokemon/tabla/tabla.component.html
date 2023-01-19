@@ -6,6 +6,7 @@
     [itemTemplate]="itemTemplate"
     [notFoundTemplate]="notFoundTemplate"
     placeholder="Buscar..."
+    (selected)="getDetail($event.name)"
   >
   </ng-autocomplete>
 
@@ -41,6 +42,7 @@
   <div class="detalles" *ngIf="detallePokemon.name !== ''">
     {{ detallePokemon.name }} - {{ detallePokemon.weight }} -
     {{ detallePokemon.height }}
+    <button (click)="detallePokemon.name = ''">X</button>
   </div>
 </div>
 <pagination-controls

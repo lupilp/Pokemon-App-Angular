@@ -48,15 +48,17 @@ export class TablaComponent implements OnInit {
       });
   }
 
+  onChangeSearch(event: any) {
+    console.log(event);
+  }
+
   getDetail(name: string) {
-    console.log(name);
     this.pokemonService.getDetails(name).subscribe((res: any) => {
       this.detallePokemon = {
         name: res.name,
         weight: res.weight,
         height: res.height,
       };
-      console.log(this.detallePokemon);
     });
   }
 }
