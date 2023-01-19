@@ -10,14 +10,17 @@ export class BusquedaComponent {
 
   constructor(private pokemonService: PokemonService) {}
 
-  // buscar() {
-  //   const valor = this.txtBuscar.nativeElement.value;
+  
 
-  //   if (valor.trim().length === 0) {
-  //     return;
-  //   }
+  buscar() {
+    console.log('Entré');
+    const valor = this.txtBuscar.nativeElement.value;
 
-  //   this.pokemonService.buscarPokemones(valor);
-  //   this.txtBuscar.nativeElement.value = '';
-  // }
+    if (valor.trim().length === 0) {
+      return;
+    }
+
+    // this.pokemonService.buscarPokemones(valor);
+    this.txtBuscar.nativeElement.value = '';
+  }
 }

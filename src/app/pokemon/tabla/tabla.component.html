@@ -1,8 +1,19 @@
 <h3>Pokemones</h3>
 
 <ul class="cards">
-  <li *ngFor="let poke of pokemons" class="card">
+  <li
+    *ngFor="
+      let poke of pokemons
+        | paginate
+          : { itemsPerPage: 10, currentPage: page, totalItems: totalPokemons }
+    "
+    class="card"
+  >
     <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
     {{ poke.name }} - {{ poke.types[0].type.name }}
   </li>
 </ul>
+
+<pagination-controls
+  (pageChange)="page = $event; pokemons = []; getPokemons()"
+></pagination-controls>
