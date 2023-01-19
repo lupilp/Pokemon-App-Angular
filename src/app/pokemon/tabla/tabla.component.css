@@ -12,6 +12,15 @@
 
 /* FIN BUSCADOR */
 
+.paginado {
+  width: fit-content;
+  margin-inline: auto;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  text-align: center;
+  padding-right: 2.5rem;
+}
+
 /* DETALLES */
 
 .detalles-card {
@@ -22,6 +31,11 @@
   height: fit-content;
   margin-top: 35px;
   border-radius: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 3px #ccc;
+  -moz-box-shadow: 0 3px #ccc;
+  box-shadow: 0 3px #ccc;
+  margin-inline: auto;
 }
 
 .detalles-info {
@@ -46,6 +60,7 @@
   color: #66625c;
   display: flex;
   gap: 0.5rem;
+  border: 1px solid #e8e8e8;
 }
 
 .detalles-item-stat {
@@ -54,8 +69,48 @@
 }
 
 .boton-cerrar-detalles {
-  background-color: #444;
+  border-width: 0;
+  color: #444;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.boton-cerrar-detalles:hover {
+  color: #ea4335;
+}
+
+.form-cambiar-nombre {
+  margin-top: 1rem;
+  background-color: rgba(255, 255, 255, 0.677);
+  padding: 0.5rem 1rem;
   border-radius: 20px;
+  text-transform: none;
+}
+
+.form-cambiar-nombre-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #66625c;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  padding: 9px 10px;
+  border-radius: 8px;
+  border-width: 0;
+  border: 1px solid #e8e8e8;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.button-cambiar-nombre {
+  background-color: #444;
+  border-radius: 8px;
   border-width: 0;
   color: #fff;
   cursor: pointer;
@@ -65,9 +120,16 @@
   line-height: 20px;
   list-style: none;
   margin: 0;
+  margin-left: 1rem;
+  padding: 5px 10px;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-cambiar-nombre:hover {
+  background-color: #2199e8;
 }
 
 /* FIN DETALLES */
@@ -76,6 +138,7 @@
   display: flex;
   flex-wrap: wrap;
   padding-inline: 2rem;
+  justify-content: center;
 }
 
 .abecedario {
@@ -88,12 +151,11 @@
 
 table {
   background: #f5f5f5;
-  box-shadow: inset 0 1px 0 #fff;
   font-size: 13px;
   line-height: 24px;
   margin: 30px auto;
   text-align: left;
-  width: 60%;
+  min-width: 60%;
   text-transform: capitalize;
   border-spacing: 0;
 }
@@ -115,6 +177,10 @@ table {
   transition: all 200ms;
   vertical-align: baseline;
   white-space: nowrap;
+}
+
+.button-2:hover {
+  background-color: #2199e8;
 }
 
 .border-izq {

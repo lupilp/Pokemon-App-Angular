@@ -7,7 +7,7 @@
       [searchKeyword]="keyword"
       [itemTemplate]="itemTemplate"
       [notFoundTemplate]="notFoundTemplate"
-      placeholder="Buscar..."
+      placeholder="Find your favorite pokemon..."
       (selected)="getDetail($event.name)"
     >
     </ng-autocomplete>
@@ -68,7 +68,7 @@
 
         <td>
           <button (click)="getDetail(poke.name)" class="button-2">
-            Ver detalles
+            See Details
           </button>
         </td>
       </tr>
@@ -78,10 +78,10 @@
 
     <!-- DETALLES -->
 
-    <!-- <div class="detalles-card" *ngIf="detallePokemon.name !== ''"> -->
-    <div class="detalles-card">
+    <div class="detalles-card" *ngIf="detallePokemon.name !== ''">
+      <!-- <div class="detalles-card"> -->
       <button (click)="detallePokemon.name = ''" class="boton-cerrar-detalles">
-        x
+        <span class="material-symbols-rounded"> cancel </span>
       </button>
       <div class="detalles-info">
         <img [src]="detallePokemon.sprites" alt="pokemon" class="img-pokemon" />
@@ -107,15 +107,21 @@
         </div>
       </div>
 
-      <div>
+      <div class="form-cambiar-nombre">
+        <div class="form-cambiar-nombre-title">
+          ¡Try your pokemon with another name!
+        </div>
         <form (ngSubmit)="changeName(newNameInput)">
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="Name"
             name="nombre"
             [(ngModel)]="newNameInput"
+            class="form-input"
           />
-          <button type="submit">Cambiar Nombre</button>
+          <button type="submit" class="button-cambiar-nombre">
+            Change Name
+          </button>
         </form>
       </div>
     </div>
@@ -133,10 +139,11 @@
   <!-- FIN ABECEDARIO -->
 
   <!-- PAGINADO -->
-
-  <pagination-controls
-    (pageChange)="page = $event; pokemons = []; getPokemons()"
-  ></pagination-controls>
+  <div class="paginado">
+    <pagination-controls
+      (pageChange)="page = $event; pokemons = []; getPokemons()"
+    ></pagination-controls>
+  </div>
 
   <!-- FIN PAGINADO -->
 </div>
