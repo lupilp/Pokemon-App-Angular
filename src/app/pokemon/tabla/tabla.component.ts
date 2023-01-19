@@ -16,6 +16,7 @@ export class TablaComponent implements OnInit {
   totalPokemons: number = 0;
   public keyword: string = 'name';
   abecedario: any = {};
+  newNameInput: string = '';
 
   detallePokemon: PokemonDetail = {
     name: '',
@@ -55,6 +56,10 @@ export class TablaComponent implements OnInit {
 
   checkObjetoEmpty(objeto: any) {
     return Object.entries(objeto).length === 0;
+  }
+
+  changeName(newName: string) {
+    this.detallePokemon.name = newName;
   }
 
   getAllPokemons() {

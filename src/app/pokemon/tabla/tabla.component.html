@@ -39,16 +39,31 @@
     </li>
   </ul>
 
+  <!-- <div class="detalles"> -->
   <div class="detalles" *ngIf="detallePokemon.name !== ''">
-    {{ detallePokemon.name }} - {{ detallePokemon.weight }} -
-    {{ detallePokemon.height }}
-    <button (click)="detallePokemon.name = ''">X</button>
+    <div>
+      {{ detallePokemon.name }} - {{ detallePokemon.weight }} -
+      {{ detallePokemon.height }}
+      <button (click)="detallePokemon.name = ''">X</button>
+    </div>
+
+    <div>
+      <form (ngSubmit)="changeName(newNameInput)">
+        <input
+          type="text"
+          placeholder="Nombre"
+          name="nombre"
+          [(ngModel)]="newNameInput"
+        />
+        <button type="submit">Cambiar Nombre</button>
+      </form>
+    </div>
   </div>
 </div>
-
-<div *ngFor="let item of abecedario | keyvalue" class="abecedario">
-  <div>{{ item.key }}</div>
-  <div>{{ item.value }}</div>
+<div class="abecedario">
+  <div *ngFor="let item of abecedario | keyvalue">
+    {{ item.key }} - {{ item.value }}
+  </div>
 </div>
 <pagination-controls
   (pageChange)="page = $event; pokemons = []; getPokemons()"
