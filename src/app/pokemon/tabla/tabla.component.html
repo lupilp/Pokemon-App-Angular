@@ -1,4 +1,3 @@
-<h3>Pokemones</h3>
 <div *ngIf="pokemonsTotal.length">
   <ng-autocomplete
     [data]="pokemonsTotal"
@@ -20,8 +19,19 @@
 </div>
 
 <div class="contenedor-home">
-  <ul class="cards">
-    <li
+  <table class="table-bordered">
+    <colgroup>
+      <col class="column1" />
+      <col class="columns2plus3" span="2" />
+    </colgroup>
+
+    <tr>
+      <th class="border-izq">Image</th>
+      <th>Pokemon Name</th>
+      <th>Pokemon Type</th>
+      <th class="border-der">Boton</th>
+    </tr>
+    <tr
       *ngFor="
         let poke of pokemons
           | paginate
@@ -33,11 +43,22 @@
       "
       class="card"
     >
-      <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
-      {{ poke.name }} - {{ poke.types[0].type.name }}
-      <button (click)="getDetail(poke.name)">Ver detalles</button>
-    </li>
-  </ul>
+      <td>
+        <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
+      </td>
+
+      <td>
+        {{ poke.name }}
+      </td>
+      <td>
+        {{ poke.types[0].type.name }}
+      </td>
+
+      <td>
+        <button (click)="getDetail(poke.name)">Ver detalles</button>
+      </td>
+    </tr>
+  </table>
 
   <!-- <div class="detalles"> -->
   <div class="detalles" *ngIf="detallePokemon.name !== ''">
