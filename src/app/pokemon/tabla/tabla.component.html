@@ -67,7 +67,7 @@
         </td>
 
         <td>
-          <button (click)="getDetail(poke.name)" class="button-2">
+          <button (click)="getDetail(poke.name)" class="button-get-detail">
             See Details
           </button>
         </td>
@@ -128,16 +128,6 @@
   </div>
   <!-- FIN DETALLES -->
 
-  <!-- ABECEDARIO -->
-
-  <div class="abecedario">
-    <div *ngFor="let item of abecedario | keyvalue">
-      {{ item.key }} - {{ item.value }}
-    </div>
-  </div>
-
-  <!-- FIN ABECEDARIO -->
-
   <!-- PAGINADO -->
   <div class="paginado">
     <pagination-controls
@@ -146,4 +136,18 @@
   </div>
 
   <!-- FIN PAGINADO -->
+
+  <!-- ABECEDARIO -->
+
+  <div class="title-abecedario">
+    Cantidad de pokemon que inician con cada letra del abecedario
+  </div>
+  <div class="abecedario">
+    <div *ngFor="let item of abecedario | keyvalue" class="abecedario-caja">
+      <div class="abecedario-letra">{{ item.key }}</div>
+      {{ item.value }}
+    </div>
+  </div>
+
+  <!-- FIN ABECEDARIO -->
 </div>
