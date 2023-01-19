@@ -10,23 +10,23 @@ export interface Result {
   url: string;
 }
 
-export interface Result {
-  abilities: Ability[];
-  base_experience: number;
-  forms: Species[];
-  game_indices: GameIndex[];
+export interface PokemonDetail {
+  abilities?: Ability[];
+  base_experience?: number;
+  forms?: Species[];
+  game_indices?: GameIndex[];
   height: number;
-  held_items: HeldItem[];
-  id: number;
-  is_default: boolean;
-  location_area_encounters: string;
-  moves: Move[];
+  held_items?: HeldItem[];
+  id?: number;
+  is_default?: boolean;
+  location_area_encounters?: string;
+  moves?: Move[];
   name: string;
-  order: number;
-  species: Species;
-  sprites: Sprites;
-  stats: Stat[];
-  types: Type[];
+  order?: number;
+  species?: Species;
+  sprites?: Sprites;
+  stats?: Stat[];
+  types?: Type[];
   weight: number;
 }
 

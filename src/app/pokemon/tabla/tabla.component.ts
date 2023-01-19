@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Result } from '../interface/pokemon.interface';
+import { Result, PokemonDetail } from '../interface/pokemon.interface';
 import { PokemonService } from '../services/pokemon.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -15,6 +15,12 @@ export class TablaComponent implements OnInit {
   page: number = 1;
   totalPokemons: number = 0;
   public keyword: string = 'name';
+
+  detallePokemon: PokemonDetail = {
+    name: '',
+    weight: 0,
+    height: 0,
+  };
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -40,5 +46,17 @@ export class TablaComponent implements OnInit {
           });
         });
       });
+  }
+
+  getDetail(name: string) {
+    console.log(name);
+    this.pokemonService.getDetails(name).subscribe((res: any) => {
+      this.detallePokemon = {
+        name: res.name,
+        weight: res.weight,
+        height: res.height,
+      };
+      console.log(this.detallePokemon);
+    });
   }
 }

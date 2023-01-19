@@ -18,20 +18,31 @@
   </ng-template>
 </div>
 
-<ul class="cards">
-  <li
-    *ngFor="
-      let poke of pokemons
-        | paginate
-          : { itemsPerPage: 10, currentPage: page, totalItems: totalPokemons }
-    "
-    class="card"
-  >
-    <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
-    {{ poke.name }} - {{ poke.types[0].type.name }}
-  </li>
-</ul>
+<div class="contenedor-home">
+  <ul class="cards">
+    <li
+      *ngFor="
+        let poke of pokemons
+          | paginate
+            : {
+                itemsPerPage: 10,
+                currentPage: page,
+                totalItems: totalPokemons
+              }
+      "
+      class="card"
+    >
+      <img [src]="poke.sprites.front_default" alt="Pokemon" class="pokemon" />
+      {{ poke.name }} - {{ poke.types[0].type.name }}
+      <button (click)="getDetail(poke.name)">Ver detalles</button>
+    </li>
+  </ul>
 
+  <div class="detalles" *ngIf="detallePokemon.name !== ''">
+    {{ detallePokemon.name }} - {{ detallePokemon.weight }} -
+    {{ detallePokemon.height }}
+  </div>
+</div>
 <pagination-controls
   (pageChange)="page = $event; pokemons = []; getPokemons()"
 ></pagination-controls>
